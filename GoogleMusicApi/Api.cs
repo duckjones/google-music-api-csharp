@@ -79,7 +79,7 @@ namespace GoogleMusicApi
 
             var hmac = new HMACSHA1(System.Text.Encoding.UTF8.GetBytes(key));
             var hash = hmac.ComputeHash(Encoding.ASCII.GetBytes(songId + salt));
-            var signature = Convert.ToBase64String(hash).Replace('+', '-').Replace('/', '_');
+            var signature = Convert.ToBase64String(hash).Replace('+', '-').Replace('/', '_').TrimEnd('=');
 
             var songUrl = streamFetchUrl + querystring(salt, signature, songId);
 
