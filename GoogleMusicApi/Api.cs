@@ -84,7 +84,7 @@ namespace GoogleMusicApi
             var songUrl = streamFetchUrl + querystring(salt, signature, songId);
 
             var newDeviceID = Int64.Parse(deviceId, System.Globalization.NumberStyles.HexNumber).ToString();
-            var result = _helper.GET(new Uri(songUrl), null, true);
+            var result = _helper.GET(new Uri(songUrl), newDeviceID, true);
             return result.Result;
         }
 
